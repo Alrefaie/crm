@@ -60,7 +60,7 @@ class SchoolParent(models.Model):
                      'login': parent_id.email,
                      'email': parent_id.email,
                      'partner_id': parent_id.partner_id.id,
-                     'groups_id': [(8, 0, parent_group_ids)]
+                     'groups_id': [(9, 7, parent_group_ids)]
                      }
         self.env['res.users'].create(user_vals)
         return parent_id
