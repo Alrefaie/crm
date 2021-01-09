@@ -49,21 +49,21 @@ class SchoolTeacher(models.Model):
                 stud_list.append(student.id)
             self.student_id = [(6, 0, stud_list)]
 
-    @api.model
-    def create(self, vals):
-        teacher_id = super(SchoolTeacher, self).create(vals)
-        user_obj = self.env['res.users']
-        user_vals = {'name': teacher_id.name,
-                     'login': teacher_id.work_email,
-                     'email': teacher_id.work_email,
-                     }
-        ctx_vals = {'teacher_create': True,
-                    'school_id': teacher_id.school_id.company_id.id}
-        user_id = user_obj.with_context(ctx_vals).create(user_vals)
-        teacher_id.employee_id.write({'user_id': user_id.id})
-        if vals.get('is_parent'):
-            self.parent_crt(teacher_id)
-        return teacher_id
+#     @api.model
+#     def create(self, vals):
+#         teacher_id = super(SchoolTeacher, self).create(vals)
+#         user_obj = self.env['res.users']
+#         user_vals = {'name': teacher_id.name,
+#                      'login': teacher_id.work_email,
+#                      'email': teacher_id.work_email,
+#                      }
+#         ctx_vals = {'teacher_create': True,
+#                     'school_id': teacher_id.school_id.company_id.id}
+#         user_id = user_obj.with_context(ctx_vals).create(user_vals)
+#         teacher_id.employee_id.write({'user_id': user_id.id})
+#         if vals.get('is_parent'):
+#             self.parent_crt(teacher_id)
+#         return teacher_id
 
     def parent_crt(self, manager_id):
         stu_parent = []
