@@ -248,17 +248,17 @@ defined!Please contact to Administator!'''
         '''Method to change state to draft'''
         self.state = 'draft'
 
-    def set_alumni(self):
-        '''Method to change state to alumni'''
-        student_user = self.env['res.users']
-        for rec in self:
-            rec.state = 'alumni'
-            rec.standard_id._compute_total_student()
-            user = student_user.search([('id', '=',
-                                         rec.user_id.id)])
-            rec.active = False
-            if user:
-                user.active = False
+    # def set_alumni(self):
+    #     '''Method to change state to alumni'''
+    #     student_user = self.env['res.users']
+    #     for rec in self:
+    #         rec.state = 'alumni'
+    #         rec.standard_id._compute_total_student()
+    #         user = student_user.search([('id', '=',
+    #                                      rec.user_id.id)])
+    #         rec.active = False
+    #         if user:
+    #             user.active = False
 
     def set_done(self):
         '''Method to change state to done'''

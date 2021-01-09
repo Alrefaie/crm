@@ -587,7 +587,7 @@ class StudentFamilyContact(models.Model):
                                  ('new', 'Create New Relative Name')],
                                 'Related Student', help="Select Name",
                                 required=True)
-    user_id = fields.Many2one('res.users', 'User ID', ondelete="cascade")
+    #user_id = fields.Many2one('res.users', 'User ID', ondelete="cascade")
     stu_name = fields.Many2one('student.student', 'Existing Student',
                                help="Select Student From Existing List")
     name = fields.Char('Relative Name')
@@ -648,9 +648,9 @@ class StudentNews(models.Model):
                           help='Subject of the news.')
     description = fields.Text('Description', help="Description")
     date = fields.Datetime('Expiry Date', help='Expiry date of the news.')
-    user_ids = fields.Many2many('res.users', 'user_news_rel', 'id', 'user_ids',
-                                'User News',
-                                help='Name to whom this news is related.')
+    # user_ids = fields.Many2many('res.users', 'user_news_rel', 'id', 'user_ids',
+    #                             'User News',
+    #                             help='Name to whom this news is related.')
     color = fields.Integer('Color Index', default=0)
 
     @api.constrains("date")
