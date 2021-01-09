@@ -2,7 +2,7 @@
 
 {
     'name': 'IDC',
-    'version': '14.0.1.0.0',
+    #'version': '14.0.1.',
     'author': 'Global Business Home S.L.',
     'website': 'http://www.gbh-business.com',
     'category': 'Course Center Management',
