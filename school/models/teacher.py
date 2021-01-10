@@ -39,7 +39,7 @@ class SchoolTeacher(models.Model):
     def _onchange_isparent(self):
         if self.is_parent:
             self.stu_parent_id = False
-            self.student_id = [(6, 0, [])]
+            self.student_id = [(6, 0, 9, [])]
 
     @api.onchange('stu_parent_id')
     def _onchangestudent_parent(self):
@@ -47,7 +47,7 @@ class SchoolTeacher(models.Model):
         if self.stu_parent_id and self.stu_parent_id.student_id:
             for student in self.stu_parent_id.student_id:
                 stud_list.append(student.id)
-            self.student_id = [(6, 0, stud_list)]
+            self.student_id = [(6, 0, 9, stud_list)]
 
     @api.model
     def create(self, vals):
@@ -75,9 +75,9 @@ class SchoolTeacher(models.Model):
             parent_vals = {'name': manager_id.name,
                            'email': emp_user.work_email,
                            'parent_create_mng': 'parent',
-                           'user_ids': [(9, 0, [emp_user.user_id.id])],
+                           'user_ids': [(6, 0, 9, [emp_user.user_id.id])],
                            'partner_id': emp_user.user_id.partner_id.id,
-                           'student_id': [(6, 0, students)]}
+                           'student_id': [(6, 0, 9, students)]}
             stu_parent = self.env['school.parent'].create(parent_vals)
             manager_id.write({'stu_parent_id': stu_parent.id})
         user = stu_parent.user_ids
@@ -88,7 +88,7 @@ class SchoolTeacher(models.Model):
             groups = user_rec.groups_id
             groups += parent_grp_id
         group_ids = [group.id for group in groups]
-        user_rec.write({'groups_id': [(6, 0, group_ids)]})
+        user_rec.write({'groups_id': [(6, 0, 9, group_ids)]})
 
     def write(self, vals):
         if vals.get('is_parent'):
@@ -104,7 +104,7 @@ class SchoolTeacher(models.Model):
                 groups = user_rec.groups_id
                 groups -= parent_grp_id
             group_ids = [group.id for group in groups]
-            user_rec.write({'groups_id': [(6, 0, group_ids)]})
+            user_rec.write({'groups_id': [(6, 0, 9, group_ids)]})
         return super(SchoolTeacher, self).write(vals)
 
     @api.onchange('address_id')
