@@ -75,7 +75,7 @@ class SchoolTeacher(models.Model):
             parent_vals = {'name': manager_id.name,
                            'email': emp_user.work_email,
                            'parent_create_mng': 'parent',
-                           'user_ids': [(6, 0, [emp_user.user_id.id])],
+                           'user_ids': [(9, 0, [emp_user.user_id.id])],
                            'partner_id': emp_user.user_id.partner_id.id,
                            'student_id': [(6, 0, students)]}
             stu_parent = self.env['school.parent'].create(parent_vals)
@@ -104,7 +104,7 @@ class SchoolTeacher(models.Model):
                 groups = user_rec.groups_id
                 groups -= parent_grp_id
             group_ids = [group.id for group in groups]
-            user_rec.write({'groups_id': [(6, 0, group_ids)]})
+            user_rec.write({'groups_id': [(9, 0, group_ids)]})
         return super(SchoolTeacher, self).write(vals)
 
     @api.onchange('address_id')
