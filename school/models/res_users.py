@@ -18,7 +18,7 @@ class ResUsers(models.Model):
             contact_create = self.env.ref('base.group_partner_manager')
             teacher_group_ids = [user_base_grp.id, teacher_grp_id.id,
                                  contact_create.id]
-            user_rec.write({'groups_id': [(6, 0, 9, teacher_group_ids)],
+            user_rec.write({'groups_id': [(9, 0, teacher_group_ids)],
                             'company_id': self._context.get('school_id'),
                             'company_ids': [(4, self._context.get('school_id'))
                                             ]})
