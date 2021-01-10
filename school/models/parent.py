@@ -62,7 +62,7 @@ class SchoolParent(models.Model):
                      'partner_id': parent_id.partner_id.id,
                      'groups_id': [(9, 0, parent_group_ids)]
                      }
-        self.env['res.users'].create(user_vals)
+#         self.env['res.users'].create(user_vals)
         return parent_id
 
     @api.onchange('state_id')
