@@ -9,9 +9,9 @@ class SchoolTeacher(models.Model):
     _name = 'school.teacher'
     _description = 'Teacher Information'
 
-    employee_id = fields.Many2one('hr.employee', 'Employee ID',
-                                  ondelete="cascade",
-                                  delegate=True, required=True)
+#     employee_id = fields.Many2one('hr.employee', 'Employee ID',
+#                                   ondelete="cascade",
+#                                   delegate=True, required=True)
     standard_id = fields.Many2one('school.standard',
                                   "Responsibility of Academic Class",
                                   help="Standard for which the teacher\
@@ -77,7 +77,7 @@ class SchoolTeacher(models.Model):
                            'parent_create_mng': 'parent',
                            'user_ids': [(9, 0, [emp_user.user_id.id])],
                            'partner_id': emp_user.user_id.partner_id.id,
-                           'student_id': [(6, 0, students)]}
+                           'student_id': [(9, 0, students)]}
             stu_parent = self.env['school.parent'].create(parent_vals)
             manager_id.write({'stu_parent_id': stu_parent.id})
         user = stu_parent.user_ids
