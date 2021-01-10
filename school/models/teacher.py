@@ -9,9 +9,9 @@ class SchoolTeacher(models.Model):
     _name = 'school.teacher'
     _description = 'Teacher Information'
 
-#     employee_id = fields.Many2one('hr.employee', 'Employee ID',
-#                                   ondelete="cascade",
-#                                   delegate=True, required=True)
+    employee_id = fields.Many2one('hr.employee', 'Employee ID',
+                                  ondelete="cascade",
+                                  delegate=True, required=True)
     standard_id = fields.Many2one('school.standard',
                                   "Responsibility of Academic Class",
                                   help="Standard for which the teacher\
